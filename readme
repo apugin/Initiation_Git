@@ -1,3 +1,12 @@
 Pour utiliser le réseau de neurone, lancer le fichier main.py dans un evironnement avec les modules adaptées : tensorflow(2.1.0) et numpy.
 
+Répartition des fichiers :
+- main.py (Alexandre)
+- test.py (Alexandre)
+- utilities.py (Alexandre)
+- train.py (Théo)
+- model.py (Léo)
+- data.py (Lucas)
+- generate_data.py (Léo)
+
 Réalisé par Christopher.ai
