@@ -1,1 +1,3 @@
-a
+Pour utiliser le réseau de neurone, lancer le fichier main.py dans un evironnement avec les modules adaptées : tensorflow(2.1.0) et numpy.
+
+Réalisé par Christopher.ai
