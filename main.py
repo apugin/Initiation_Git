@@ -10,7 +10,7 @@ parser.add_argument('--batch_size', dest='batch_size', type=int, default=128, he
 parser.add_argument('--lr', dest='lr', type=float, default=0.001, help='initial learning rate for adam')
 # parser.add_argument('--use_gpu', dest='use_gpu', type=int, default=1, help='gpu flag, 1 for GPU and 0 for CPU')
 parser.add_argument('--phase', dest='phase', default='train', help='train or test')
-parser.add_argument('--checkpoint_dir', dest='ckpt_dir', default='./checkpoint', help='models are saved here')
+parser.add_argument('--checkpoint_dir', dest='ckpt_dir', default='./checkpoints', help='models are saved here')
 # Il faut décider de où on stocke les poids
 args = parser.parse_args()
 
@@ -18,19 +18,17 @@ args = parser.parse_args()
 def main():
     if not os.path.exists(args.ckpt_dir):
         os.makedirs(args.ckpt_dir)
-    if not os.path.exists(args.test_dir):
-        os.makedirs(args.test_dir)
 
     lr = args.lr * np.ones([args.epoch])
     # Pour changer la valeur du learning rate selon l'epoch
 
     if args.phase == 'train':
-        train(args.epoch, args.batch_size, lr)
+        train(batchsize=args.batch_size, epochs=args.epoch, lr=lr)
 
     elif args.phase == 'test':
-        test(args.epoch, args.ckpt_dir)
+        test(epoch=args.epoch, ckpt_dir=args.ckpt_dir)
 
-    else :
+    else:
         print("/!\ Unknown phase : type 'train' or 'test'")
         exit(0)
 
