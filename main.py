@@ -1,8 +1,6 @@
 import numpy as np
-import tensorflow as tf
 import argparse
 import os
-# from model import super_resolution
 from test import test
 from train import train
 
@@ -14,15 +12,7 @@ parser.add_argument('--lr', dest='lr', type=float, default=0.001, help='initial 
 parser.add_argument('--phase', dest='phase', default='train', help='train or test')
 parser.add_argument('--checkpoint_dir', dest='ckpt_dir', default='./checkpoint', help='models are saved here')
 # Il faut décider de où on stocke les poids
-parser.add_argument('--test_dir', dest='test_dir', default='./data/test', help='denoised sample are saved here')
-# Il faut décider de où on stocke les images dont on a baissé la résolution
 args = parser.parse_args()
-
-# Quel nom donner au réseau ? Je pars sur super_resolution
-# Forme des fonctions :
-# build_network(weights=None) [ne pas le faire dans main]
-# train(epoch, batch_size, lr)
-# test(ckpt_dir, test_dir)
 
 
 def main():
@@ -38,7 +28,7 @@ def main():
         train(args.epoch, args.batch_size, lr)
 
     elif args.phase == 'test':
-        test(args.ckpt_dir, args.test_dir)
+        test(args.epoch, args.ckpt_dir)
 
     else :
         print("/!\ Unknown phase : type 'train' or 'test'")
